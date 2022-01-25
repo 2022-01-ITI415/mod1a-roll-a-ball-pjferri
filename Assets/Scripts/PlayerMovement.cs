@@ -34,4 +34,13 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(movement * speed); //Where the magic really happens, where the force is added to the ball to make it move
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }
