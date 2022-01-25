@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rb;  
+    private Rigidbody rb;
+    private int count;
+
     private float movementX;
     private float movementY;
     public float speed;
@@ -14,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        count = 0;
         rb = GetComponent<Rigidbody>(); //gets reference to the rigidbody component on Player
     }
 
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
+            count++;
         }
     }
 
