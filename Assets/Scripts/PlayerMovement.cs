@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;  
     private float movementX;
     private float movementY;
-
+    public float speed;
 
 
     // Start is called before the first frame update
@@ -19,11 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue movementValue)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>(); //Storing an X,Y value, hence why its a Vector 2
+        Vector2 movementVector = movementValue.Get<Vector2>(); //Storing an X,Y value that has been changed, hence why its a Vector 2
 
-        movementX = movementVector.x;
-        movementY = movementVector.y;
-
+        movementX = movementVector.x; //Storing the x
+        movementY = movementVector.y; //Storing the y
 
     }
 
@@ -32,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed); //Where the magic really happens, where the force is added to the ball to make it move
 
     }
 }
