@@ -2,22 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     private int count;
+    public TextMeshProUGUI countText;
+
 
     private float movementX;
     private float movementY;
     public float speed;
 
 
+    void SetCountText() 
+    {
+        countText.text = "count:" + count.ToString();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         count = 0;
         rb = GetComponent<Rigidbody>(); //gets reference to the rigidbody component on Player
+        SetCountText();
     }
 
     void OnMove(InputValue movementValue)
@@ -44,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             count++;
+            SetCountText();
         }
     }
 
