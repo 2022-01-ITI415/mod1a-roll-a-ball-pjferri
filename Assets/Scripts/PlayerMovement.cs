@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private int count;
     public TextMeshProUGUI countText;
-
+    public GameObject winTextObject;
 
     private float movementX;
     private float movementY;
@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     void SetCountText() 
     {
         countText.text = "Power : " + count.ToString();
+        if (count >= 12)
+        {
+            winTextObject.SetActive(true);
+        }
     }
 
     // Start is called before the first frame update
@@ -27,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         count = 0;
         rb = GetComponent<Rigidbody>(); //gets reference to the rigidbody component on Player
         SetCountText();
+        winTextObject.SetActive(false);
     }
 
     void OnMove(InputValue movementValue)
