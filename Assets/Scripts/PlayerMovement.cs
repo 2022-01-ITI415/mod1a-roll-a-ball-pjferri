@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SetCountText() 
     {
-        countText.text = "count:" + count.ToString();
+        countText.text = "Power : " + count.ToString();
     }
 
     // Start is called before the first frame update
